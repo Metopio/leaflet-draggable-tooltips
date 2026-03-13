@@ -1,6 +1,8 @@
-# leaflet-draggable-tooltip
+# @metopio/leaflet-draggable-tooltips
 
 A [Leaflet](https://leafletjs.com/) plugin that makes marker tooltips draggable and pinnable. Click a marker to keep its tooltip open, then drag it anywhere on the map.
+
+**[Live Demo →](https://metopio.github.io/leaflet-draggable-tooltips/demo/index.html)**
 
 ---
 
@@ -18,47 +20,42 @@ A [Leaflet](https://leafletjs.com/) plugin that makes marker tooltips draggable 
 
 ---
 
-## Demo link
-https://metopio.github.io/leaflet-draggable-tooltips/demo/index.html
-
----
-
 ## Installation
 
 ### npm
 
 ```bash
-npm install leaflet-draggable-tooltip
+npm install @metopio/leaflet-draggable-tooltips
 ```
 
 ```js
-import "leaflet-draggable-tooltip/src/leaflet.draggable-tooltip.js"
+import "@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.js"
 ```
 
 ### CDN
 
-Once published to npm, available via unpkg or jsDelivr:
+Available via unpkg or jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/leaflet-draggable-tooltip/src/leaflet.draggable-tooltip.css" />
-<script src="https://unpkg.com/leaflet-draggable-tooltip/src/leaflet.draggable-tooltip.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.css" />
+<script src="https://unpkg.com/@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.js"></script>
 ```
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-draggable-tooltip/src/leaflet.draggable-tooltip.css" />
-<script src="https://cdn.jsdelivr.net/npm/leaflet-draggable-tooltip/src/leaflet.draggable-tooltip.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.css" />
+<script src="https://cdn.jsdelivr.net/npm/@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.js"></script>
 ```
 
 ### Manual
 
-Download `leaflet.draggable-tooltip.js` and `leaflet.draggable-tooltip.css` and include them after Leaflet:
+Download `leaflet.draggable-tooltips.js` and `leaflet.draggable-tooltips.css` from the [releases page](https://github.com/Metopio/leaflet-draggable-tooltips/releases) and include them after Leaflet:
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<link rel="stylesheet" href="leaflet.draggable-tooltip.css" />
+<link rel="stylesheet" href="leaflet.draggable-tooltips.css" />
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="leaflet.draggable-tooltip.js"></script>
+<script src="leaflet.draggable-tooltips.js"></script>
 ```
 
 ---
