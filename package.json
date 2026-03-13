@@ -12,13 +12,13 @@
     ],
     "author": "Georgina Rivero",
     "license": "MIT",
-    "homepage": "https://github.com/metopio/leaflet-draggable-tooltip",
+    "homepage": "https://github.com/Metopio/leaflet-draggable-tooltips",
     "repository": {
         "type": "git",
-        "url": "https://github.com/metopio/leaflet-draggable-tooltip.git"
+        "url": "https://github.com/Metopio/leaflet-draggable-tooltips.git"
     },
     "bugs": {
-        "url": "https://github.com/metopio/leaflet-draggable-tooltip/issues"
+        "url": "https://github.com/Metopio/leaflet-draggable-tooltips/issues"
     },
     "main": "src/leaflet.draggable-tooltip.js",
     "style": "src/leaflet.draggable-tooltip.css",
