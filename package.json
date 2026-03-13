@@ -1,5 +1,5 @@
 {
-    "name": "@metopio/leaflet-draggable-tooltip",
+    "name": "@metopio/leaflet-draggable-tooltips",
     "version": "1.0.1",
     "description": "A Leaflet plugin that makes marker tooltips draggable and pinnable.",
     "keywords": [
@@ -20,10 +20,11 @@
     "bugs": {
         "url": "https://github.com/Metopio/leaflet-draggable-tooltips/issues"
     },
-    "main": "src/leaflet.draggable-tooltip.js",
-    "style": "src/leaflet.draggable-tooltip.css",
+    "main": "src/leaflet.draggable-tooltips.js",
+    "style": "src/leaflet.draggable-tooltips.css",
     "files": [
-        "src/"
+        "src/",
+        "demo/"
     ],
     "peerDependencies": {
         "leaflet": "^1.0.0"
