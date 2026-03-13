@@ -1,6 +1,6 @@
 {
     "name": "@metopio/leaflet-draggable-tooltips",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "description": "A Leaflet plugin that makes marker tooltips draggable and pinnable.",
     "keywords": [
         "leaflet",
