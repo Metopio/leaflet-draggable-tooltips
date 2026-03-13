@@ -46,7 +46,7 @@ Once published to npm, available via unpkg or jsDelivr:
 
 ### Manual
 
-Download `leaflet.draggable-tooltip.js` and `leaflet.draggable-tooltip.css` from the [releases page](https://github.com/yourname/leaflet-draggable-tooltip/releases) and include them after Leaflet:
+Download `leaflet.draggable-tooltip.js` and `leaflet.draggable-tooltip.css` and include them after Leaflet:
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
