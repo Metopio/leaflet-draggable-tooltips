@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>leaflet-draggable-tooltip — Demo</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="../src/leaflet.draggable-tooltip.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+    <script src="../src/leaflet.draggable-tooltip.js" defer></script>
+    <script src="demo.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>leaflet-<span>draggable-tooltip</span></h1>
+    <div class="badges">
+        <span class="badge badge-blue">Leaflet 1.x</span>
+        <span class="badge badge-green">Plugin Demo</span>
+    </div>
+</header>
+
+<div class="layout">
+    <div id="map"></div>
+
+    <aside>
+        <div class="aside-section">
+            <h2>How to use</h2>
+
+            <div class="instruction">
+                <div class="instruction-icon">👆</div>
+                <div class="instruction-text"><strong>Click a marker</strong> to pin its tooltip open</div>
+            </div>
+            <div class="instruction">
+                <div class="instruction-icon">👆</div>
+                <div class="instruction-text"><strong>Click again</strong> to unpin and close</div>
+            </div>
+            <div class="instruction">
+                <div class="instruction-icon">✋</div>
+                <div class="instruction-text"><strong>Drag a pinned tooltip</strong> to reposition it freely on the map</div>
+            </div>
+            <div class="instruction">
+                <div class="instruction-icon">📍</div>
+                <div class="instruction-text">The <strong>Paris</strong> marker starts with a preset tooltip position</div>
+            </div>
+        </div>
+
+        <div id="event-log">
+            <div class="log-title">Event log</div>
+            <div class="log-empty" id="log-empty">No drag events yet…</div>
+        </div>
+    </aside>
+</div>
+
+</body>
+</html>

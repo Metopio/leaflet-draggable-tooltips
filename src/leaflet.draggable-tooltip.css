@@ -1,0 +1,15 @@
+.leaflet-tooltip-draggable {
+  cursor: move !important;
+  /* Override Leaflet's default pointer-events:none so the tooltip can
+  receive mouse events for dragging and click-stopPropagation. */
+  pointer-events: auto !important;
+  /* Prevent the browser's text-selection drag gesture from interfering. */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Suppress Leaflet's own CSS transitions while a drag is in progress so the
+tooltip tracks the pointer exactly. */
+.leaflet-tooltip-dragging {
+  transition: none !important;
+}
