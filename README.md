@@ -18,6 +18,11 @@ A [Leaflet](https://leafletjs.com/) plugin that makes marker tooltips draggable 
 
 ---
 
+## Demo link
+https://metopio.github.io/leaflet-draggable-tooltips/demo/index.html
+
+---
+
 ## Installation
 
 ### npm
