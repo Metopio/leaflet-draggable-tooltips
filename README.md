@@ -30,6 +30,7 @@ npm install @metopio/leaflet-draggable-tooltips
 
 ```js
 import "@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.js"
+import "@metopio/leaflet-draggable-tooltips/src/leaflet.draggable-tooltips.css"
 ```
 
 ### CDN
