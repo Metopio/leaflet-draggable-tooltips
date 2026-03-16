@@ -153,17 +153,17 @@
             tooltip._draggableTooltipPatched = true
 
             const handler = this
+            const originalUpdatePositionFn = tooltip._updatePosition
             const originalUpdatePosition = tooltip._updatePosition.bind(tooltip)
+            tooltip._originalUpdatePositionFn = originalUpdatePositionFn
             tooltip._originalUpdatePosition = originalUpdatePosition
 
             tooltip._updatePosition = function () {
                 if (handler._tooltipLatLng && this._map) {
                     const position = this._map.latLngToLayerPoint(handler._tooltipLatLng)
                     if (typeof this._setPosition === "function") {
-                        // In newer Leaflet versions, the tooltip instance itself has a setPosition method that handles offsets and map pane transformations, so use that if available.
                         this._setPosition(position)
                     } else {
-                        // Fallback for older Leaflet versions that don't have setPosition on the tooltip instance itself.
                         const offset = L.point(this.options.offset || [0, 0])
                         L.DomUtil.setPosition(this._container, position.add(offset))
                     }
@@ -172,13 +172,65 @@
                 }
             }
 
+            if (typeof tooltip._animateZoom === "function") {
+                const originalAnimateZoomFn = tooltip._animateZoom
+                const originalAnimateZoom = tooltip._animateZoom.bind(tooltip)
+                tooltip._originalAnimateZoomFn = originalAnimateZoomFn
+                tooltip._originalAnimateZoom = originalAnimateZoom
+
+                tooltip._animateZoom = function (e) {
+                    if (handler._tooltipLatLng && this._map) {
+                        const pos = this._map._latLngToNewLayerPoint(handler._tooltipLatLng, e.zoom, e.center)
+                        if (typeof this._setPosition === "function") {
+                            this._setPosition(pos)
+                        } else {
+                            const offset = L.point(this.options.offset || [0, 0])
+                            L.DomUtil.setPosition(this._container, pos.add(offset))
+                        }
+                    } else {
+                        originalAnimateZoom(e)
+                    }
+                }
+            }
+
+            if (tooltip._map) {
+                tooltip._map.off("zoom", originalUpdatePositionFn, tooltip)
+                tooltip._map.off("viewreset", originalUpdatePositionFn, tooltip)
+                tooltip._map.on("zoom", tooltip._updatePosition, tooltip)
+                tooltip._map.on("viewreset", tooltip._updatePosition, tooltip)
+
+                if (tooltip._originalAnimateZoomFn) {
+                    tooltip._map.off("zoomanim", tooltip._originalAnimateZoomFn, tooltip)
+                    tooltip._map.on("zoomanim", tooltip._animateZoom, tooltip)
+                }
+            }
         },
 
         _unpatchTooltip: function (tooltip) {
             if (!tooltip || !tooltip._draggableTooltipPatched) return
-            if (tooltip._originalUpdatePosition) {
-                tooltip._updatePosition = tooltip._originalUpdatePosition
+
+            if (tooltip._map) {
+                if (tooltip._originalUpdatePositionFn) {
+                    tooltip._map.off("zoom", tooltip._updatePosition, tooltip)
+                    tooltip._map.off("viewreset", tooltip._updatePosition, tooltip)
+                    tooltip._map.on("zoom", tooltip._originalUpdatePositionFn, tooltip)
+                    tooltip._map.on("viewreset", tooltip._originalUpdatePositionFn, tooltip)
+                }
+                if (tooltip._originalAnimateZoomFn) {
+                    tooltip._map.off("zoomanim", tooltip._animateZoom, tooltip)
+                    tooltip._map.on("zoomanim", tooltip._originalAnimateZoomFn, tooltip)
+                }
+            }
+
+            if (tooltip._originalUpdatePositionFn) {
+                tooltip._updatePosition = tooltip._originalUpdatePositionFn
                 delete tooltip._originalUpdatePosition
+                delete tooltip._originalUpdatePositionFn
+            }
+            if (tooltip._originalAnimateZoomFn) {
+                tooltip._animateZoom = tooltip._originalAnimateZoomFn
+                delete tooltip._originalAnimateZoom
+                delete tooltip._originalAnimateZoomFn
             }
 
             delete tooltip._draggableTooltipPatched
@@ -259,7 +311,7 @@
                 handler._onDragMove(e, map)
             }
 
-            this._mouseupHandler = function (e) {
+            this._mouseupHandler = function () {
                 handler._endDrag(map)
             }
 
