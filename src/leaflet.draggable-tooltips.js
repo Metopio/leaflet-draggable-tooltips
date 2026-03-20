@@ -292,6 +292,21 @@
             this._mapDraggingWasEnabled = map.dragging.enabled()
             map.dragging.disable()
 
+            // Prevent the tooltip from changing direction while dragging by locking it to its current direction (if "auto").
+            const tooltip = this._tooltip
+            if (tooltip && tooltip.options.direction === "auto") {
+                this._lockedDirection = null
+                const directionClasses = ["right", "left", "top", "bottom", "center"]
+                for (const dir of directionClasses) {
+                    if (tooltip._container.classList.contains("leaflet-tooltip-" + dir)) {
+                        this._lockedDirection = dir
+                        break
+                    }
+                }
+                if (this._lockedDirection) {
+                    tooltip.options.direction = this._lockedDirection
+                }
+            }
 
             const position = e.touches && e.touches.length > 0 ? e.touches[0] : e
             this._dragStartClientX = position.clientX
@@ -359,6 +374,12 @@
 
             if (this._mapDraggingWasEnabled) {
                 map.dragging.enable()
+            }
+
+            // Restore "auto" direction if was changed on drag
+            if (this._lockedDirection && this._tooltip) {
+                this._tooltip.options.direction = "auto"
+                this._lockedDirection = null
             }
 
             this._clearDocumentListeners()

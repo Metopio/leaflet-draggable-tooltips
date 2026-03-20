@@ -8,6 +8,11 @@
   -webkit-user-select: none;
 }
 
+/* Hide the directional triangle arrow. */
+.leaflet-tooltip-draggable::before {
+  display: none !important;
+}
+
 /* Suppress Leaflet's own CSS transitions while a drag is in progress so the
 tooltip tracks the pointer exactly. */
 .leaflet-tooltip-dragging {
